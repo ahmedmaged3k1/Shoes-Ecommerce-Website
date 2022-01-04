@@ -18,7 +18,9 @@ E-commerce full website to buy and view shoes on it
 ## How To use 
 
 Download the project and enter following commands in your ide 
-npm install , which will install all used node modules of node js automatically 
+### npm install 
+### npm start  
+which will install all used node modules of node js automatically 
 Running on local host port 4000
 
 ## Documentation 

@@ -2,7 +2,7 @@
 
 E-commerce full website to buy and view shoes on it 
 
-###Scr# Built with
+#### Built with
 
  -NodeJs
  -TypeScript

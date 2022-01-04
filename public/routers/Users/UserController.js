@@ -26,6 +26,20 @@ function getUsers(request, response, next) {
     });
 }
 exports.getUsers = getUsers;
+// function addCart(request, response, next) {
+//     return __awaiter(this, void 0, void 0, function* () {
+//         try {
+//             const name = request.params.name;
+//             const newValues ={$set:{cart:[
+
+//             ]}}
+//             const shoe = yield ShoesInterface.default.findById(id);
+//         }
+//         catch (e) {
+//             next(e);
+//         }
+//     });
+// }
 function add(request, response, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

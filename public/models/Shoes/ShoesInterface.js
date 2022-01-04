@@ -11,17 +11,20 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
-var __importStar = (this && this.__importStar) || function (mod) {
+var __importStar = (this && this.__importStar) || function(mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null)
+        for (var k in mod)
+            if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importStar(require("mongoose"));
-const schema = mongoose_1.default.Schema;
-const movieSchema = new mongoose_1.Schema({
+//
+const mongoose = __importStar(require("mongoose"));
+const schema = mongoose.default.Schema;
+const ShoesSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -54,7 +57,15 @@ const movieSchema = new mongoose_1.Schema({
         required: true,
         minlength: 5,
         maxlength: 70
-    }
-});
-const Shoe = mongoose_1.default.model("shoes", movieSchema);
-exports.default = Shoe;
+    },
+    size: {
+        type: Number,
+        required: true,
+        minlength: 2,
+        maxlength: 4
+
+    },
+}, { timestamps: true });
+const Shoes = mongoose.default.model("Shoes", ShoesSchema);
+exports.default = Shoes;
+//

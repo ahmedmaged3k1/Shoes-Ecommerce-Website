@@ -1,0 +1,105 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <div class="layout_padding gallery_section">
+            <div class="container">
+                <div class="row">
+                    <div id="app">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include("./partials/footer.ejs") %>
+    </body>
+    <script>
+       function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
+function doSomething() {
+    var myCookie = getCookie("auth_token");
+
+    if (myCookie == null) {
+        // do cookie doesn't exist stuff;
+        alert("User is  not Logged in Please Log in ")
+        window.location.href = "http://localhost:4000/AllShoeses";
+
+    }
+    else {
+        alert("User is Logged in ")
+        alert("Welcome to your Cart ")
+        // do cookie exists stuff
+    }
+}
+doSomething()
+        function fetchData() {
+            fetch('http://localhost:4000/carts')
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error("ERROR");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    for (i = 0; i < data.length; i++) {
+                        console.log(data[i].name)
+                    }
+                    data.forEach(element => {
+                        const txt = document.createElement("div");
+                        txt.innerHTML = element.name;
+                        txt.className = "best_text";
+                        const img = document.createElement("img");
+                        img.src = element.image;
+
+                        img.className = "shoes_icon";
+                        const price = document.createElement("div");
+                        price.innerHTML = element.price + " EGP";
+                        price.className = "shoes_price";
+                        const container = document.createElement("a");
+                        container.href = "/shoes/" + element._id;
+                        container.className = "best_shoes";
+                        container.addEventListener("click", function() {
+                            fetch("http://localhost:4000/shoes");
+                        })
+                        container.appendChild(txt);
+                        container.appendChild(img);
+                        container.appendChild(price);
+                        document.getElementById("app").appendChild(container);
+
+
+                    });
+
+
+
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+
+        }
+        fetchData();
+    </script>
+
+
+
+</html>

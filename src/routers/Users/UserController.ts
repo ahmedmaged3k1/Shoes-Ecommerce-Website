@@ -14,6 +14,18 @@ export async  function getUsers (request : Express.Request ,response: Express.Re
     }
     
 }
+// export async  function getCart (request : Express.Request ,response: Express.Response, next: Express.NextFunction){
+
+//     try{
+//         const userName = request.params.name
+//         const userCar = await User.updateOne(userName,)
+//         response.json(users)
+//     }
+//     catch(e){
+//         next(e)
+//     }
+    
+// }
 export async function  add(request : Express.Request ,response: Express.Response, next: Express.NextFunction) {
     try{
         const user = request.body

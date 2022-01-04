@@ -8,5 +8,8 @@ const ShoesController_1 = require("./ShoesController");
 const router = express_1.default.Router();
 //router.get("/:movieId",MovieController.getMovie)
 router.get("/", ShoesController_1.getShoes);
+router.get("/:shoeId", ShoesController_1.getShoesById);
+router.get("/shoes/:shoeId", ShoesController_1.getShoesByIdCart);
+
 router.post("/", ShoesController_1.add);
 exports.default = router;

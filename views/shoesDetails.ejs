@@ -1,0 +1,122 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/shoes_details.css">
+    
+</head>
+
+<body>
+    <div class="header_section ">
+        <div class="container">
+            <div class="col-sm-9">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="/home">Home</a>
+                            <a class="nav-item nav-link" href="/collection">Collection</a>
+                            <a class="nav-item nav-link" href="/AllShoeses">Shoes</a>
+                            <a class="nav-item nav-link" href="/racingboots">Racing Boots</a>
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                            <a class="nav-item nav-link last" href="/search">search</a>
+                            <a class="nav-item nav-link last" href="/Cart">cart</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="product_image">
+                <img id="cartImage"  src=<%=ShoesInterface.image%> width="368" height="150">
+            </img>
+        </div>
+        <div class="product_name" >
+            <h1 id="cartName">
+                <%=ShoesInterface.name%>
+            </h1>
+        </div>
+        <div class="product_price_EGP">
+            <h1>EGP : </h1>
+        </div>
+        <div class="product_price">
+            <h1 id="cartPrice">
+                <%=ShoesInterface.price%>
+            </h1>
+        </div>
+        <form class="size">
+            <label for="sizes">Choose a size:</label>
+            <select name="size">
+                                 <option value="38">38</option>
+                                 <option value="39">39</option>
+                                 <option value="40">40</option>
+                                 <option value="41">41</option>
+                                </select>
+            <br><br>
+            
+                <input  style="background-color: red;"  type="submit" id="addCart"  value="Add To Cart" >
+                    
+            </input>
+
+
+
+
+        </form>
+        <form class="quantity" style="margin-right: 200px;">
+            <label for="quantity">Quantity :</label>
+            <input type="number" name="quantity" min="1" max="5">
+        </form>
+        <br><br>
+
+        </div>
+        
+
+    
+
+
+
+
+
+</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+   async   function  fetchData(){
+           
+           const price  =  document.getElementById("cartPrice").innerText
+           const name = document.getElementById("cartName").innerText
+           const img =  document.getElementById("cartImage").getAttribute("src")
+
+           console.log(img)
+            const data = {image:img ,price:price , name:name }
+          
+
+           const options = {
+               method:'POST' ,
+               
+                body:JSON.stringify(data)
+           }
+           console.log(JSON.stringify(data))
+
+           try{
+            
+               const axiosInstance = axios.create();
+                await axiosInstance.post("http://localhost:4000/carts",data)
+           alert("Added To Cart ")
+           }
+          catch(e){
+           alert("Cannot Add To Cart")
+           console.log(e)
+           alert(e)
+          }
+           
+        }
+        const signUpButton = document.getElementById("addCart")
+        signUpButton.addEventListener("click",fetchData)
+</script>
+
+</html>

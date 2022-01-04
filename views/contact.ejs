@@ -1,0 +1,132 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        
+        <!-- contact section start -->
+        <div class="collection_text">Contact Us</div>
+        <div class="layout_padding contact_section">
+            <div class="container">
+                <h1 class="new_text"><strong>Sign in</strong></h1>
+            </div>
+            <div class="container" style="margin-left: 1200px;">
+                <h1 class="new_text"><strong>Sign Up</strong></h1>
+            </div>
+            <div class="container-fluid ram">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="email_box">
+                            <div class="input_main">
+                                <div class="container">
+                                    <form action="/action_page.php">
+                                       
+                                        
+                                        <div class="form-group" >
+                                            <input type="text" id="emailLogin" class="email-bt" placeholder="Email" name="Email">
+                                        </div>
+                                        <div class="form-group" >
+                                            <input  id="passwordLogin" type="text" class="email-bt" placeholder="Password" name="Password">
+                                        </div>
+                                        
+
+                                       
+                                    </form>
+                                </div>
+                                <div class="send_btn">
+                                    <button id="signInButtons" class="main_bt">Sign In</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        
+                        <div class="email_box">
+                            <div class="input_main">
+                                
+                                <div class="container">
+                                    
+                                    <div >
+                                        <div class="form-group" >
+                                            <input  id="emailUp" type="text" class="email-bt" placeholder="Email" name="Email">
+                                        </div>
+                                        <div class="form-group" >
+                                            <input id="passwordUp" type="text" class="email-bt" placeholder="Password" name="Password">
+                                        </div>
+                                        <div class="form-group" >
+                                            <input type="text" class="email-bt"  id="nameUp"placeholder="Name" name="Name">
+                                        </div>
+                                        <div class="send_btn" >
+                                            <button id="signUpButtons"   class="main_bt">Sign Up</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("./partials/footer.ejs") %>
+        
+    </body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        console.log("andaknslalsnkdnkal")
+       
+        async  function signIn(){
+           const email =  document.getElementById("emailLogin").value
+           const password  =  document.getElementById("passwordLogin").value
+           const data = {email:email , password:password } 
+           try{
+               console.log(email)
+               
+               const axiosInstance = axios.create();
+                await axiosInstance.post("http://localhost:4000/SignIn",data)
+           alert("Sign In Suceeded ")
+           }
+          catch(e){
+           alert("Sign In Erorr ")
+           
+           console.log(e)
+          }
+
+        }
+        const signIpButton = document.getElementById("signInButtons")
+        signIpButton.addEventListener("click",signIn)
+         
+        async   function  signUp(){
+           
+           const email =  document.getElementById("emailUp").value
+           const password  =  document.getElementById("passwordUp").value
+           const name = document.getElementById("nameUp").value
+           
+            const data = {name:name ,email:email , password:password }
+          
+
+           const options = {
+               method:'POST' ,
+               
+                body:JSON.stringify(data)
+           }
+           console.log(JSON.stringify(data))
+
+           try{
+               console.log(email)
+               
+               const axiosInstance = axios.create();
+                await axiosInstance.post("http://localhost:4000/Users",data)
+           alert("Registeration Suceeded ")
+           }
+          catch(e){
+           alert("Registeration Erorr ")
+           console.log(e)
+          }
+           
+        }
+        const signUpButton = document.getElementById("signUpButtons")
+        signUpButton.addEventListener("click",signUp)
+    </script>
+</html>

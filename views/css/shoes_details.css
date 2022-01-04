@@ -1,0 +1,78 @@
+.product_image {
+    height: auto;
+    left: 10%;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    border: 5px solid #353532;
+    padding: 10px;
+    top: 30%;
+    ;
+}
+
+.product_name {
+    color: black;
+    font-size: medium;
+    font-family: serif;
+    position: absolute;
+    display: inline-block;
+    top: 32%;
+    right: 51%;
+    padding: 10px;
+}
+
+.product_price_EGP {
+    color: rgb(83, 81, 81);
+    font: 20px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif !important;
+    position: absolute;
+    top: 43%;
+    right: 54%;
+    padding: 10px;
+}
+
+.product_price {
+    color: rgb(83, 81, 81);
+    font: 20px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif !important;
+    position: absolute;
+    top: 43%;
+    right: 49%;
+    padding: 10px;
+}
+
+.size {
+    color: black;
+    font: 20px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif !important;
+    position: absolute;
+    top: 55%;
+    right: 46%;
+    padding: 10px;
+}
+
+.quantity {
+    color: black;
+    font: 20px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif !important;
+    position: absolute;
+    top: 55%;
+    right: 10%;
+    padding: 10px;
+}
+
+input[type=submit] {
+    background-color: #db5660;
+    border: none;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    right: 51%;
+    font-size: 16pt;
+    color: #ffffff;
+}
